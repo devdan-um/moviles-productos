@@ -28,12 +28,13 @@ public class ProductosController {
         return this.repository.findById(id).get();
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    //@CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/save/product")
     public ResponseEntity save(@RequestBody ProductoRequest request){
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+        responseHeaders.setAccessControlAllowOrigin("http://localhost:5173");
 
         ProductoEntity entity = new ProductoEntity();
         entity.setNombre(request.getName());
